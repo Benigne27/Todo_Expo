@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flex: 3,
       backgroundColor: '#fff',
     },
 
@@ -23,17 +23,14 @@ export const styles = StyleSheet.create({
     },
 
     body:{
-      flex:1,
+      flex:2,
       alignItems:'center',
-      height:100,
-
+      height:430,
     },
     listHead:{
       fontSize:20,
       marginTop:20,
       marginLeft:-150,
-      // flex:1,
-      // justifyContent:'flex-start'
     },
 
     list:{
@@ -41,21 +38,46 @@ export const styles = StyleSheet.create({
       paddingBottom:20,
       paddingLeft:10,
       paddingRight:30,
-      backgroundColor:'rgba(128, 128, 128, 0.4)',
-      width:300,
+      backgroundColor:'rgba(128, 128, 128, 0.1)',
+      width:370,
       marginTop:20,
       fontSize:20,
       borderWidth:2,
-      borderStyle:'dotted',
+      borderStyle:'dashed',
       borderRadius:15
     },
-    input:{
-      // marginBottom:100,
-      paddingTop: 20,
-      paddingBottom:20,
+
+    bigInput:{
+      width:250,
+      marginTop:220,
+      paddingTop: 25,
+      paddingBottom:25,
       paddingLeft:10,
       paddingRight:30,
-      width:300,
+      marginLeft:20,
+      borderRadius:10,
+      shadowOffset:{width:-2, height:4},
+      shadowOpacity:0.7,
+      backgroundColor:'white',
+      shadowColor:'black'
+      
+      
+    },
+    bottom:{
+      flex:1,
+      flexDirection:'row',
+      gap:10
+    },
+
+    button:{
+      marginTop:220,
+      paddingTop: 25,
+      paddingBottom:25,
+      paddingLeft:15,
+      paddingRight:15,
+      backgroundColor:'orange',
+      borderRadius:10
     }
+
   });
   
