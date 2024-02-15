@@ -4,6 +4,8 @@ import Todo from './Todo';
 import SignIn from './SignIn';
 import LogIn from './LogIn';
 import Images from './Images';
+import RobotLogin from './RobotLogin';
+import RobotRegister from './RobotRegister';
 
 export default function App() {
   return (
@@ -11,7 +13,9 @@ export default function App() {
     // <SignIn/>
     // <Todo/>
     // <LogIn/>
-    <Images/>
+    // <Images/>
+    <RobotLogin/>
+    // <RobotRegister/>
     
   );
 }
