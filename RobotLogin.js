@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { TextInput, Checkbox } from 'react-native-paper'
+import { TextInput} from 'react-native-paper'
 import { Icon } from 'react-native-elements'
 const images = require('./assets/LoginRobot.jpeg');
 
@@ -98,12 +98,4 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         gap:90,
       },
-
-      // bodyInputs:{
-      //   width:400,
-      //   backgroundColor:"rgba(128, 128, 128, 0.2)",
-      //   display:'flex',
-
-      // }
-    
 })

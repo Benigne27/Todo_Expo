@@ -6,6 +6,7 @@ import LogIn from './LogIn';
 import Images from './Images';
 import RobotLogin from './RobotLogin';
 import RobotRegister from './RobotRegister';
+import Wallet from './wallet';
 
 export default function App() {
   return (
@@ -14,8 +15,10 @@ export default function App() {
     // <Todo/>
     // <LogIn/>
     // <Images/>
-    <RobotLogin/>
+    // <RobotLogin/>
     // <RobotRegister/>
+    <Wallet/>
+    
     
   );
 }

@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
         objectFit:'fill'
     },
     body:{
-        // backgroundColor:'#F4F5F7',
-        // height:600,
+        backgroundColor:'#F4F5F7',
+        height:600,
     },
     inputs:{
         marginTop:30,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         
       },
       pass:{
-        marginTop:30,
+        marginTop:20,
         flex:1,
         alignItems: 'center',
       },
