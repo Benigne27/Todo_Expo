@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
+import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 import { Icon } from 'react-native-elements'
 // import { Icon } from 'react-native-paper'

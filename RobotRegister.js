@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { TextInput} from 'react-native-paper'
 import { Icon } from 'react-native-elements'
@@ -40,7 +41,7 @@ export default function RobotRegister() {
             </View>
             <View style={styles.pass}>
         <View style={styles.create}>
-        <TouchableOpacity style={{backgroundColor:'black', width:350,paddingVertical:15, borderRadius:40}}><Text style={{color:'white', fontWeight:'bold', fontSize:18, textAlign:'center'}}>Register</Text></TouchableOpacity>
+        <TouchableOpacity style={{backgroundColor:'black', width:350,paddingVertical:15, borderRadius:40}} onPress={()=>na}><Text style={{color:'white', fontWeight:'bold', fontSize:18, textAlign:'center'}}>Register</Text></TouchableOpacity>
       </View>
       <View style={{display:'flex', flexDirection:'row', gap:50, marginTop:50}}>
         <Icon name='facebook' iconStyle={{color:'#3475DB', fontSize:40, backgroundColor:'white', padding:10, borderRadius:40}}/>
