@@ -8,7 +8,7 @@ export default function Cards2({image, name, price}) {
         <ImageBackground style={styles.image} 
         source={{uri:image}}
          resizeMode='cover' imageStyle={{borderRadius:20}}>
-          <View style={{backgroundColor:'white'}}><Icon name='cards-heart-outline'/></View>
+          <View style={{backgroundColor:'white'}}><Icon name='heart-outline'/></View>
          </ImageBackground>
          <View style={{margin:10}}>
          <Text style={{fontSize:16}}>{name}</Text>

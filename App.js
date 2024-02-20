@@ -13,32 +13,43 @@ import Products from './Products';
 import Tags from './tags';
 import Cards1 from './Cards1';
 import Cards2 from './Cards2';
+import Splash from './Muvi/Splash';
+import Start from './Muvi/Start';
+import Yellow from './Muvi/Yellow';
+import Welcome from './Muvi/Welcome';
 
-// const Stack= createNativeStackNavigator()
+const Stack= createNativeStackNavigator()
 
 export default function App() {
   return (
 
-    <>
-    <Products/>
-    {/* <Tags/> */}
-    {/* <Cards1/> */}
-    {/* <Cards2/> */}
-    </>
+   
+    // {/* <Products/> */}
+    // {/* <Tags/> */}
+    // {/* <Cards1/> */}
+    // {/* <Cards2/> */}
+    // {/* <Splash/> */}
+    // {/* <Start/> */}
+    // {/* <Yellow/> */}
+    // {/* <Welcome/> */}
+  
 
-    // <NavigationContainer>
-    //   <Stack.Navigator initialRouteName='Register'>
-    //     <Stack.Screen
-    //          name='Register'
-    //         component={RobotRegister}/>
-    //     <Stack.Screen
-    //          name='Login'
-    //          component={RobotLogin}/>
-    //     <Stack.Screen
-    //          name='Wallet'
-    //         component={Wallet}/>
-    //   </Stack.Navigator>
-    // </NavigationContainer>   
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Splash'>
+        <Stack.Screen
+             name='Splash'
+            component={Splash} 
+            options={{headerShown:false}}/>
+        <Stack.Screen
+             name='Start'
+             component={Start}
+             options={{headerShown:false}}/>
+        <Stack.Screen
+             name='Welcome'
+            component={Welcome}
+            options={{headerShown:false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>   
 
   );
 }
