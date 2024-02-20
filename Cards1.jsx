@@ -5,7 +5,7 @@ export default function Cards1({image, price, name, id}) {
   return (
     <View style={styles.container}>
         <ImageBackground style={styles.image} 
-        source={{image}}
+        source={{uri:image}}
          resizeMode='cover' imageStyle={{borderRadius:20}}>
           <View style={{marginTop:13, marginLeft:16, backgroundColor:'#C19D61', width:110, borderRadius:15}}><Text style={{ paddingVertical:3, textAlign:'center', color:'white', fontWeight:'500'}}>#{id} BestSeller</Text></View>
 

@@ -20,10 +20,10 @@ export default function App() {
   return (
 
     <>
-    {/* <Products/> */}
+    <Products/>
     {/* <Tags/> */}
     {/* <Cards1/> */}
-    <Cards2/>
+    {/* <Cards2/> */}
     </>
 
     // <NavigationContainer>

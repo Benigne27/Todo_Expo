@@ -7,59 +7,80 @@ import Tags from './tags'
 import Cards1 from './Cards1'
 import Cards2 from './Cards2'
 
+
 export default function Products() {
   const data=[
     {
       id:1,
       name:'GJ Jeans',
       price:46.05,
-      image:'./assets/Christmas.jpg'
+      image: 'https://images.pexels.com/photos/6347892/pexels-photo-6347892.jpeg?auto=compress&cs=tinysrgb&w=600' 
     },
     {
       id:2,
       name:'Jackets',
       price:50.25,
-      image:'./assets/Christmas.jpg'
+      image: 'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=600'
     },
     {
       id:3,
       name:'Skirts',
       price:35.45,
-      image:'./assets/Christmas.jpg'
+      image: 'https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&w=600' 
     },
     {
       id:4,
       name:'Dresses',
       price:60.50,
-      image:'./assets/corn.jpg'
+      image: 'https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=600' 
     },
   ]
 
   const stock=[
     {
-    image:'./assets/corn.jpg'
+    image:'https://images.pexels.com/photos/6626903/pexels-photo-6626903.jpeg?auto=compress&cs=tinysrgb&h=204&fit=crop&w=228&dpr=2',
+    name:'White T-Shirt',
+    price:45
     },
     {
-      image:'./assets/corn.jpg'
+      image:'https://images.pexels.com/photos/991509/pexels-photo-991509.jpeg?auto=compress&cs=tinysrgb&w=600',
+      name:'White T-Shirt',
+      price:45
       },
       {
-        image:'./assets/corn.jpg'
+        image:'https://images.pexels.com/photos/9558567/pexels-photo-9558567.jpeg?auto=compress&cs=tinysrgb&w=600',
+        name:'White T-Shirt',
+        price:45
         },
         {
-          image:'./assets/corn.jpg'
+          image:'https://images.pexels.com/photos/9558699/pexels-photo-9558699.jpeg?auto=compress&cs=tinysrgb&w=600',
+          name:'White T-Shirt',
+          price:45
           },
           {
-            image:'./assets/corn.jpg'
+            image:'https://images.pexels.com/photos/6626903/pexels-photo-6626903.jpeg?auto=compress&cs=tinysrgb&h=204&fit=crop&w=228&dpr=2',
+            name:'White T-Shirt',
+            price:45
             },
             {
-              image:'./assets/corn.jpg'
+              image:'https://images.pexels.com/photos/991509/pexels-photo-991509.jpeg?auto=compress&cs=tinysrgb&w=600',
+              name:'White T-Shirt',
+             price:45
               },
               {
-                image:'./assets/corn.jpg'
+                image:'https://images.pexels.com/photos/9558567/pexels-photo-9558567.jpeg?auto=compress&cs=tinysrgb&w=600',
+                name:'White T-Shirt',
+                price:45
                 },
+                {
+                  image:'https://images.pexels.com/photos/9558699/pexels-photo-9558699.jpeg?auto=compress&cs=tinysrgb&w=600',
+                  name:'White T-Shirt',
+                  price:45
+                  },
   ]
   return (
     <View style={styles.container}>
+      <ScrollView>
       <StatusBar style='auto'/>
         <View style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', paddingHorizontal:30, paddingVertical:20}}>
         <View style={{backgroundColor:'#ECECEC', padding:13, borderRadius:30}}><Icon name='arrow-back'/></View>
@@ -89,7 +110,7 @@ export default function Products() {
           
             {data.map((item,i)=>{
               return(
-              <View style={{marginVertical:30, marginHorizontal:8}}>
+              <View key={i} style={{marginVertical:30, marginHorizontal:8}}>
                 <Cards1 id={item.id} image={item.image}
                 name={item.name} price={item.price}/>
               </View> 
@@ -97,14 +118,19 @@ export default function Products() {
             })}
           
           </ScrollView>
-
-          <View>
+<View style={{marginLeft:43, marginVertical:20}}><Text style={{fontSize:20, fontWeight:'bold'}}>Product result (43)</Text></View>
+          <View style={{display:'flex', flexDirection:'row', flexWrap:'wrap', alignItems:'center', justifyContent:'center', gap:10}}>
+            
             {stock.map((elem, i)=>{
               return(
-                <Cards2 image={elem.image}/>
+                <View key={i} >
+                  <Cards2 image={elem.image} name={elem.name} price={elem.price}/>
+                  </View>
+                
               )
             })}
           </View>
+          </ScrollView>
     </View>
   )
 }
