@@ -1,20 +1,22 @@
-import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, Dimensions } from 'react-native'
 import React from 'react'
 import Yellow from './Yellow'
 import { StatusBar } from 'expo-status-bar'
 
+const height=Dimensions.get('screen').height
+
 export default function Start({navigation}) {
   return (
     <View>
-        {/* <StatusBar style='auto'/> */}
+        <StatusBar style='auto'/>
      <ImageBackground source={require('../assets/Joker3.jpg')} 
      resizeMode='cover'  style={styles.image}>
         <View style={styles.opacity}>
-            <Text style={styles.text1}>Enjoy your favourite</Text>
-            <Text style={styles.text1}>movie everywhere</Text>
+            <Text style={styles.text1}>Enjoy your favourite {"\n"} movie everywhere</Text>
             <Text style={styles.text2}>Browse through our collections and discover hundreds of
                 movies and series that you'll love!
             </Text>
+            <View></View>
         </View>
      </ImageBackground>
      <View style={{top:820}}>
@@ -30,7 +32,7 @@ export default function Start({navigation}) {
 const styles = StyleSheet.create({
     image:{
         flex:1, 
-        height:900,
+        height:height,
         position:'relative'
     },
     opacity:{
@@ -53,6 +55,6 @@ const styles = StyleSheet.create({
         fontSize:16,
         color:'white',
         marginTop:15,
-        letterSpacing:1
+        // letterSpacing:1
     }
 })

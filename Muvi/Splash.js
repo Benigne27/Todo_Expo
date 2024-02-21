@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar'
 
 export default function Splash({navigation}) {
 
+
   return (
     <View style={styles.container}>
     <TouchableWithoutFeedback onPress={()=>navigation.navigate('Start')} >
