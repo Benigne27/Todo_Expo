@@ -5,10 +5,55 @@ import React from 'react'
 import Input from './input'
 import Yellow from './Yellow'
 import Dark from './Dark'
+import { useState } from 'react'
 
 const height=Dimensions.get('screen').height
 
 export default function SignIn({navigation}) {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+
+  const validateForm = () => {
+      let valid = true
+
+      
+      if (!email.trim()) {
+          setEmailError('Email is required')
+          valid = false
+      } else if (!isValidEmail(email)) {
+          setEmailError('Invalid email format')
+          valid = false
+      } else {
+          setEmailError('')
+      }
+
+   
+      if (!password.trim()) {
+          setPasswordError('Password is required')
+          valid = false
+      } else {
+          setPasswordError('')
+      }
+
+      return valid
+  }
+
+  const handleSubmit = () => {
+      if (validateForm()) {
+          
+          console.log('Form submitted:', email, password)
+      }
+  }
+
+  const isValidEmail = (email) => {
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      return emailRegex.test(email)
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style='light'/>
