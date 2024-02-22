@@ -20,6 +20,7 @@ import Welcome from './Muvi/Welcome';
 import SignIn2 from './Muvi/SignIn';
 import SignUp from './Muvi/SignUp';
 import Home from './Muvi/Home';
+import Trails from './Muvi/Trails';
 
 const Stack= createNativeStackNavigator()
 
@@ -62,7 +63,7 @@ export default function App() {
             }}}/>
             <Stack.Screen
              name='Home'
-             component={Home}
+             component={Trails}
              options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>   

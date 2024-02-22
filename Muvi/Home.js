@@ -1,8 +1,21 @@
-import { StyleSheet, Text, View, Dimensions, Image, FlatList, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, Image, FlatList, ScrollView }from 'react-native'
 import { Icon } from 'react-native-elements'
 import React from 'react'
-import { StatusBar } from 'expo-status-bar'
+import { StatusBar }from 'expo-status-bar'
 import Tags from './tags'
+const Aladdin= require('../assets/Aladdin.jpg')
+const Beauty = require('../assets/BeautyB.jpg')
+const Cinderella = require('../assets/Cinderella.jpg')
+const Encanto = require('../assets/Encanto.jpg')
+const Frozen = require('../assets/Frozen.jpg')
+const Jungle = require('../assets/JungleBook.jpg')
+const Lion = require('../assets/LionK.jpg')
+const Mermaid = require('../assets/Mermaid.jpg')
+const Moana = require('../assets/Moana.jpg')
+const Mulan = require('../assets/Mulan.jpg')
+const PeterPan = require('../assets/PeterPan.jpg')
+const Tangled = require('../assets/Tangled.jpg')
+const Zootopia = require('../assets/Zootopia.jpg')
 
 
 const height=Dimensions.get('screen').height
@@ -76,6 +89,62 @@ export default function Home() {
             name:'NetFlix'
         },
     ]
+
+    const Images=[
+        {
+            id:1,
+            image: Aladdin
+        },
+        {
+            id:2,
+            image: Beauty
+        },
+        {
+            id:3,
+            image: Cinderella
+        },
+        {
+            id:4,
+            image: Encanto
+        },
+        {
+            id:5,
+            image: Frozen
+        },
+        {
+            id:6,
+            image: Lion
+        },
+        {
+            id:7,
+            image: Mermaid
+        },
+        {
+            id:8,
+            image: Moana
+        },
+        {
+            id:9,
+            image: Mulan
+        },
+        {
+            id:10,
+            image: PeterPan
+        },
+        {
+            id:11,
+            image: Jungle
+        },
+        {
+            id:12,
+            image: Tangled
+        },
+        {
+            id:13,
+            image: Zootopia
+        },
+
+    ]
   return (
     <View style={styles.container}>
         <StatusBar style='light'/>
@@ -96,7 +165,7 @@ export default function Home() {
         </View>
       </View>
       <View style={styles.body}>
-        <ScrollView horizontal>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{paddingHorizontal:25, paddingVertical:30}}>
             {tags.map((item,i)=>{
                 return(
                 <View key={i} style={{paddingHorizontal:5}}>
