@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Pressable } from 'react-native'
 import React from 'react'
 import Yellow from './Yellow'
+import { StatusBar } from 'expo-status-bar'
 
 export default function Welcome({navigation}) {
   return (
     <View style={styles.container}>
+        <StatusBar style='light'/>
         <View style={styles.logo}>
         <Image source={require('../assets/Muvi.png')}/>
         </View>
@@ -18,7 +20,7 @@ export default function Welcome({navigation}) {
         <View style={{top:170}}>
             <Yellow text='Watch movie' navigation={navigation} destinationScreen='Splash'/>
             <View style={styles.button}>
-                <Text style={styles.text}>Sign In</Text>
+                <Pressable onPress={()=>navigation.navigate('Sign In')}><Text style={styles.text}>Sign In</Text></Pressable>
             </View>
         </View>
 

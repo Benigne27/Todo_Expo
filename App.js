@@ -17,21 +17,15 @@ import Splash from './Muvi/Splash';
 import Start from './Muvi/Start';
 import Yellow from './Muvi/Yellow';
 import Welcome from './Muvi/Welcome';
+import SignIn2 from './Muvi/SignIn';
+import SignUp from './Muvi/SignUp';
+import Home from './Muvi/Home';
 
 const Stack= createNativeStackNavigator()
 
 export default function App() {
   return (
 
-   
-    // {/* <Products/> */}
-    // {/* <Tags/> */}
-    // {/* <Cards1/> */}
-    // {/* <Cards2/> */}
-    // {/* <Splash/> */}
-    // {/* <Start/> */}
-    // {/* <Yellow/> */}
-    // {/* <Welcome/> */}
   
 
     <NavigationContainer>
@@ -48,6 +42,28 @@ export default function App() {
              name='Welcome'
             component={Welcome}
             options={{headerShown:false}}/>
+            <Stack.Screen
+             name='Sign In' 
+            component={SignIn2}
+            options={{headerStyle:{
+              backgroundColor:'#1F2123',
+            }, headerBackTitleVisible:null,
+            headerTintColor:'white', headerBackTitleStyle:{
+              
+            }}}/>
+             <Stack.Screen
+             name='Sign Up'
+             component={SignUp}
+             options={{headerStyle:{
+              backgroundColor:'#1F2123',
+            }, headerBackTitleVisible:null,
+            headerTintColor:'white', headerBackTitleStyle:{
+              
+            }}}/>
+            <Stack.Screen
+             name='Home'
+             component={Home}
+             options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>   
 

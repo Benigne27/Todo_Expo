@@ -7,8 +7,9 @@ export default function Splash({navigation}) {
 
   return (
     <View style={styles.container}>
+      <StatusBar style='light'/>
     <TouchableWithoutFeedback onPress={()=>navigation.navigate('Start')} >
-        {/* <StatusBar style='auto'/> */}
+        
       <Image source={require('../assets/Muvi.png')} style={styles.image} />
     </TouchableWithoutFeedback>
     </View>
