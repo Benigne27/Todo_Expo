@@ -4,6 +4,7 @@ import React from 'react'
 import { StatusBar }from 'expo-status-bar'
 import Tags from './tags'
 import Trails from './Trails'
+import Trails2 from './Trails2'
 const Aladdin= require('../assets/Aladdin.webp')
 const Beauty = require('../assets/BeautyB.jpg')
 const Cinderella = require('../assets/Cinderella.jpg')
@@ -274,7 +275,7 @@ export default function Home() {
             {Images3.map((item,i)=>{
                 return(
                     <View key={i} style={{paddingHorizontal:5}}>
-                        <Trails image={item.image} rate={item.rate}/>
+                        <Trails2 image={item.image} rate={item.rate}/>
                     </View>
                 )
             })}

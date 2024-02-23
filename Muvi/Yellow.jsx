@@ -1,7 +1,10 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
+import { useState } from 'react'
+
 
 export default function Yellow({text, navigation, destinationScreen}) {
+
     const onPress = () => {
         navigation.navigate(destinationScreen);
       };

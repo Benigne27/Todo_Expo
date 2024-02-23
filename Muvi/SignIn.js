@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Dimensions, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, TouchableWithoutFeedback, Pressable } from 'react-native'
 import { Icon } from 'react-native-elements'
+import { TextInput } from 'react-native-paper'
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import Input from './input'
@@ -24,7 +25,7 @@ export default function SignIn({navigation}) {
           setEmailError('Email is required')
           valid = false
       } else if (!isValidEmail(email)) {
-          setEmailError('Invalid email format')
+          setEmailError('The Email is invalid')
           valid = false
       } else {
           setEmailError('')
@@ -43,7 +44,7 @@ export default function SignIn({navigation}) {
 
   const handleSubmit = () => {
       if (validateForm()) {
-          
+          navigation.navigate('Home')
           console.log('Form submitted:', email, password)
       }
   }
@@ -60,11 +61,18 @@ export default function SignIn({navigation}) {
      
 
       <View style={styles.body}>
-      <Input label='Email Address' icon='email-outline' placeholder='e.g janedoe@mail.com' bool={false}/>
+     
+      <Input label='Email Address' icon='email-outline' placeholder='e.g janedoe@mail.com' value={email}
+      bool={false} change={setEmail} error={!!emailError} complete='email' correct={false}/>
+      {/* <View style={{height:10}}>{emailError?(<Text style={{color:'red'}}>{setEmailError}</Text>):null}</View> */}
       <View style={{height:10}}></View>
-      <Input label='Password' icon='lock-outline' placeholder='Your password' bool={true}/>
+      
+      <Input label='Password' icon='lock-outline' placeholder='Your password' bool={true}
+      value={password} change={setPassword} error={!!passwordError}/>
       <Text style={{ textAlign:'right', color:'white', fontSize:16, paddingVertical:15}}>Forgot Password?</Text>
-      <Yellow text='Sign In' navigation={navigation} destinationScreen='Home'/>
+      <Pressable style={styles.contains} onPress={handleSubmit}>
+      <Text style={styles.text4}>Sign In</Text>
+    </Pressable>
       </View>
 
       <View>
@@ -77,7 +85,9 @@ export default function SignIn({navigation}) {
 
       <View style={styles.sign}>
         <Text style={{color:'white', fontSize:17, fontWeight:'500'}}>Don't have an account?</Text>
-       <TouchableWithoutFeedback onPress={()=> navigation.navigate('Sign Up')}><Text style={{color:'#F2B916', fontSize:17, fontWeight:'500'}}>Sign Up</Text></TouchableWithoutFeedback> 
+       <TouchableWithoutFeedback onPress={()=> navigation.navigate('Sign Up')}>
+        <Text style={{color:'#F2B916', fontSize:17, fontWeight:'500'}}>Sign Up</Text>
+        </TouchableWithoutFeedback> 
       </View>
     </View>
   )
@@ -104,5 +114,20 @@ const styles = StyleSheet.create({
       gap:5,
       justifyContent:'center',
       paddingVertical:20
-    }
+    },
+    contains:{
+      width:370,
+      height:40,
+      backgroundColor:'#F2B916',
+      alignItems:'center',
+      justifyContent:'center',
+      paddingVertical:10,
+      borderRadius:7,
+      alignSelf:'center'
+
+  },
+  text4:{
+      fontSize:17,
+      fontWeight:'400',
+  }
 })
