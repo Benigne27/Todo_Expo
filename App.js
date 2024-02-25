@@ -74,7 +74,7 @@ export default function App() {
              options={{headerShown:false}}/>
              <Stack.Screen
              name='List'
-             component={ListTrail}
+             component={List}
              options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>   

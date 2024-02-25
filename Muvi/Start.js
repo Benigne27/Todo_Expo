@@ -10,23 +10,13 @@ export default function Start({navigation}) {
   return (
     <View>
         <StatusBar style='light'/>
-     <ImageBackground source={require('../assets/Aladdin.jpg')} 
+     <ImageBackground source={require('../assets/Mermaid.jpg')} 
      resizeMode='cover'  style={styles.image}>
         <View style={styles.opacity}>
             <Text style={styles.text1}>Enjoy your favourite {"\n"} movie everywhere</Text>
             <Text style={styles.text2}>Browse through our collections and discover hundreds of
                 movies and series that you'll love!
             </Text>
-            {/* <View> */}
-            {/* <Slider
-        style={styles.slider}
-        minimumValue={0}
-        maximumValue={5}
-        onValueChange={setSlide}
-        step={1}
-      />
-      <Text style={styles.indicator}>{slide}</Text> */}
-            {/* </View> */}
         </View>
      </ImageBackground>
      <View style={{top:820}}>
@@ -49,7 +39,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         height:900,
         width:'100%',
-        backgroundColor:'rgba(000,000,000,0.7)',
+        backgroundColor:'rgba(000,000,000,0.75)',
         display:'flex',
         alignItems:'flex-start',
         justifyContent:'center',
