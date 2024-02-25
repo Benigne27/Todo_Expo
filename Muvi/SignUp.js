@@ -30,9 +30,9 @@ export default function SignUp({navigation}) {
       
         <View>
         <Text style={{textAlign:'center', paddingVertical:20, fontSize:17, color:'white'}}>or sign in with</Text>
-        <Dark text='Google' icon='google' type='font-awesome' color='red'/>
+        <Dark text='Google' icon='google' type='font-awesome' color='red' style={{color:'white'}}/>
       <View style={{height:10}}></View>
-        <Dark text='Watch movie' icon='movie-open-outline' type='material-community' color='white'/>
+        <Dark text='Watch movie' icon='movie-open-outline' type='material-community' color='white' style={{color:'white'}}/>
       <View style={{height:10}}></View>
       </View>
     </View>

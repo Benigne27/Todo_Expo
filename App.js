@@ -21,6 +21,9 @@ import SignIn2 from './Muvi/SignIn';
 import SignUp from './Muvi/SignUp';
 import Home from './Muvi/Home';
 import Trails from './Muvi/Trails';
+import Profile from './Muvi/Profile';
+import List from './Muvi/List';
+import ListTrail from './Muvi/ListTrail';
 
 const Stack= createNativeStackNavigator()
 
@@ -64,6 +67,14 @@ export default function App() {
             <Stack.Screen
              name='Home'
              component={Home}
+             options={{headerShown:false}}/>
+             <Stack.Screen
+             name='Profile'
+             component={Profile}
+             options={{headerShown:false}}/>
+             <Stack.Screen
+             name='List'
+             component={ListTrail}
              options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>   

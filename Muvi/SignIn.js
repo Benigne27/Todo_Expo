@@ -64,11 +64,13 @@ export default function SignIn({navigation}) {
      
       <Input label='Email Address' icon='email-outline' placeholder='e.g janedoe@mail.com' value={email}
       bool={false} change={setEmail} error={!!emailError} complete='email' correct={false}/>
-      {/* <View style={{height:10}}>{emailError?(<Text style={{color:'red'}}>{setEmailError}</Text>):null}</View> */}
+      <View style={{height:30}}>{emailError?(<Text style={{color:'red', paddingVertical:5}}>{emailError}</Text>):null}</View>
       <View style={{height:10}}></View>
       
       <Input label='Password' icon='lock-outline' placeholder='Your password' bool={true}
       value={password} change={setPassword} error={!!passwordError}/>
+      <View style={{height:30}}>{emailError?(<Text style={{color:'red', paddingVertical:5}}>{passwordError}</Text>):null}</View>
+
       <Text style={{ textAlign:'right', color:'white', fontSize:16, paddingVertical:15}}>Forgot Password?</Text>
       <Pressable style={styles.contains} onPress={handleSubmit}>
       <Text style={styles.text4}>Sign In</Text>
@@ -77,9 +79,9 @@ export default function SignIn({navigation}) {
 
       <View>
         <Text style={{textAlign:'center', paddingVertical:20, fontSize:17, color:'white'}}>or sign in with</Text>
-        <Dark text='Google' icon='google' type='font-awesome' color='red'/>
+        <Dark text='Google' icon='google' type='font-awesome' color='red' style={{color:'white'}}/>
       <View style={{height:10}}></View>
-        <Dark text='Watch movie' icon='movie-open-outline' type='material-community' color='white'/>
+        <Dark text='Watch movie' icon='movie-open-outline' type='material-community' color='white' style={{color:'white'}}/>
       <View style={{height:10}}></View>
       </View>
 

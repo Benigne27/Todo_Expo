@@ -10,7 +10,7 @@ export default function Start({navigation}) {
   return (
     <View>
         <StatusBar style='light'/>
-     <ImageBackground source={require('../assets/Joker3.jpg')} 
+     <ImageBackground source={require('../assets/Aladdin.jpg')} 
      resizeMode='cover'  style={styles.image}>
         <View style={styles.opacity}>
             <Text style={styles.text1}>Enjoy your favourite {"\n"} movie everywhere</Text>

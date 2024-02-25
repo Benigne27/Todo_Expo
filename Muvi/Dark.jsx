@@ -2,14 +2,15 @@ import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
 import { Icon } from 'react-native-elements';
 
-export default function Dark({text, navigation, destinationScreen, icon, type, color}) {
+export default function Dark({text, navigation, destinationScreen, icon, type, color, style, ...rest}) {
     const onPress = () => {
         navigation.navigate(destinationScreen);
       };
   return (
     <Pressable style={styles.container} onPress={onPress}>
         <Icon name={icon} type={type} size={20} color={color}/>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[{fontSize:17,
+        fontWeight:'400'}, style]} {...rest}>{text}</Text>
     </Pressable>
   )
 }
@@ -31,9 +32,4 @@ const styles = StyleSheet.create({
         gap:5
 
     },
-    text:{
-        fontSize:17,
-        fontWeight:'400',
-        color:'white'
-    }
 })
