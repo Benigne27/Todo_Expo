@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
         display:'flex',
         flexDirection:'row',
         gap:10,
-        paddingVertical:20
+        paddingVertical:10
 
     },
     image:{
         height:150,
-        width:250,
+        width:220,
     }
 })

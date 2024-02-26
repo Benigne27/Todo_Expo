@@ -24,6 +24,7 @@ import Trails from './Muvi/Trails';
 import Profile from './Muvi/Profile';
 import List from './Muvi/List';
 import ListTrail from './Muvi/ListTrail';
+import Search from './Muvi/Search';
 
 const Stack= createNativeStackNavigator()
 
@@ -75,6 +76,10 @@ export default function App() {
              <Stack.Screen
              name='List'
              component={List}
+             options={{headerShown:false}}/>
+             <Stack.Screen
+             name='Search'
+             component={Search}
              options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>   

@@ -63,7 +63,7 @@ export default function List({navigation}) {
         },
     ]
   return (
-    <View style={styles.container}>
+    <View style={styles.container1}>
         <StatusBar style='light'/>
       <View style={styles.header}>
         <View style={styles.header1}>
@@ -91,9 +91,9 @@ export default function List({navigation}) {
             </View>
             <View style={styles.menu}>
        <Pressable onPress={()=>navigation.navigate('Home')}><Icon name='home' iconStyle={{color:'white', fontSize:30}}/></Pressable>
-        <Icon name='search' iconStyle={{color:'white', fontSize:30}}/>
-        <Icon name='folder' iconStyle={{color:'#F2B916', fontSize:30}}/>  
-        <Icon name='menu' iconStyle={{color:'white', fontSize:30}}/>
+       <Pressable onPress={()=>navigation.navigate('Search')}><Icon name='search' iconStyle={{color:'white', fontSize:30}}/></Pressable>
+        <Pressable onPress={()=>navigation.navigate('List')}><Icon name='folder' iconStyle={{color:'#F2B916', fontSize:30}}/></Pressable>  
+        <Pressable onPress={()=>navigation.navigate('Profile')}><Icon name='menu' iconStyle={{color:'white', fontSize:30}}/></Pressable>
       </View>
 
     </View>
@@ -101,7 +101,7 @@ export default function List({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container1:{
         backgroundColor:'#1F2123',
         height:height,
     },
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     body:{
         backgroundColor:'#26282C',
         paddingBottom:105,
-        paddingHorizontal:10
+        paddingRight:10
     },
     menu:{
         height:100,

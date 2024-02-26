@@ -59,9 +59,8 @@ const styles = StyleSheet.create({
     },
     text2:{
         fontSize:16,
-        color:'white',
+        color:'gray',
         marginTop:15,
-        letterSpacing:1,
         textAlign:'center'
     },
     button:{

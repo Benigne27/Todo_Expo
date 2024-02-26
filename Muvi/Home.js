@@ -214,9 +214,9 @@ export default function Home({navigation}) {
         <StatusBar style='light'/>
       <View style={styles.header}>
         <View style={styles.header1}>
-            <Pressable onPress={()=>navigation.navigate('Profile')}>
+            
                 <Image source={require('../assets/Muvi.png')} style={{height:60, width:150}}/>
-            </Pressable>
+          
             <View style={{display:'flex', flexDirection:'row', gap:15}}>
                 <Icon name='bookmark-outline' type='material-community' iconStyle={{color:'white'}}/>
                 <Icon name='bell-outline' type='material-community' iconStyle={{color:'white'}}/>
@@ -284,9 +284,9 @@ export default function Home({navigation}) {
       </ScrollView>
       <View style={styles.menu}>
         <Icon name='home' iconStyle={{color:'#F2B916', fontSize:30}}/>
-        <Icon name='search' iconStyle={{color:'white', fontSize:30}}/>
+        <Pressable onPress={()=>navigation.navigate('Search')}><Icon name='search' iconStyle={{color:'white', fontSize:30}}/></Pressable>
         <Pressable onPress={()=>navigation.navigate('List')}><Icon name='folder' iconStyle={{color:'white', fontSize:30}}/></Pressable>  
-        <Icon name='menu' iconStyle={{color:'white', fontSize:30}}/>
+        <Pressable onPress={()=>navigation.navigate('Profile')}><Icon name='menu' iconStyle={{color:'white', fontSize:30}}/></Pressable>
       </View>
      
     </View>
