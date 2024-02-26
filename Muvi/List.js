@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Dimensions, Pressable,  Image, FlatList, ScrollView } from 'react-native'
 import { StatusBar }from 'expo-status-bar'
 import { Icon } from 'react-native-elements'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ListTrail from './ListTrail'
 const height=Dimensions.get('screen').height
 const Guard = require('../assets/Home.jpg')
@@ -11,6 +11,26 @@ const Panda = require('../assets/Panda.jpg')
 const Sinbad = require('../assets/Sinbad.jpg')
 
 export default function List({navigation}) {
+    const [movie, setMovie]=useState([])
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTZkZjcwYmMwMWRjZmQwNGFjM2IyZWIyYmQ1NTY4NiIsInN1YiI6IjY1ZDg2YzExYTI4NGViMDE4NTg3ZjgwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.a6PeP6q_wT-WWIEvsSJIorsE4u0KlW5fOT17eF4d_Qs'
+        }
+      };
+
+      useEffect(()=>{
+        GetMovies()
+      }, [])
+      const GetMovies=()=>{
+      fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
+        .then(response => response.json())
+        .then(response =>{
+            setMovie(response.results)
+        })
+        .catch(err => console.error(err));
+      }
     const data=[
         {
             id:1,
@@ -78,15 +98,11 @@ export default function List({navigation}) {
         </View>
             </View>
             <View style={styles.body}>
-            <ScrollView style={{paddingHorizontal:25}}>
-            {Images.map((item,i)=>{
-                return(
-                    <View key={i} style={{paddingHorizontal:5}}>
-                        <ListTrail image={item.image} text1={item.text1} text2={item.text2} text3={item.text3}/>
-                    </View>
-                )
-            })}
-        </ScrollView>
+            
+        <FlatList
+        data={movie}
+        renderItem={({item})=>
+        <ListTrail image={item.poster_path} text1={item.name} text2={item.vote_count} text3={item.first_air_date}/>}/>
 
             </View>
             <View style={styles.menu}>

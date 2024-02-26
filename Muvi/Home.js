@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Dimensions, Image, FlatList, ScrollView, Pressable }from 'react-native'
 import { Icon } from 'react-native-elements'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { StatusBar }from 'expo-status-bar'
 import Tags from './tags'
 import Trails from './Trails'
@@ -28,6 +28,47 @@ const Trolls = require('../assets/Trolls.jpg')
 
 const height=Dimensions.get('screen').height
 export default function Home({navigation}) {
+    const [movie, setMovie]=useState([])
+    const [popular, setPopular]=useState([])
+    const [rated, setRated]=useState([])
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTZkZjcwYmMwMWRjZmQwNGFjM2IyZWIyYmQ1NTY4NiIsInN1YiI6IjY1ZDg2YzExYTI4NGViMDE4NTg3ZjgwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.a6PeP6q_wT-WWIEvsSJIorsE4u0KlW5fOT17eF4d_Qs'
+        }
+      };
+      useEffect(()=>{
+        GetMovies()
+        GetPopular()
+        GetRated()
+      })
+
+      const GetMovies=()=>{
+            fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
+              .then(response => response.json())
+              .then(response =>{
+                  setMovie(response.results)
+              })
+              .catch(err => console.error(err));
+            }
+        const GetPopular=()=>{
+                fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+                  .then(response => response.json())
+                  .then(response =>{
+                      setPopular(response.results)
+                  })
+                  .catch(err => console.error(err));
+                }
+        const GetRated=()=>{
+                    fetch('https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1', options)
+                      .then(response => response.json())
+                      .then(response =>{
+                          setRated(response.results)
+                      })
+                      .catch(err => console.error(err));
+                    }
+      
     const data=[
         {
             id:1,
@@ -98,116 +139,6 @@ export default function Home({navigation}) {
         },
     ]
 
-    const Images=[
-        {
-            id:1,
-            image: Aladdin,
-            rate:8.8
-        },
-        {
-            id:2,
-            image: Beauty,
-            rate:8.6
-
-        },
-        {
-            id:3,
-            image: Cinderella,
-            rate:9.3
-
-        },
-        {
-            id:4,
-            image: Encanto,
-            rate:9.5
-            
-        },
-        {
-            id:5,
-            image: Frozen,
-            rate:9.6
-        },
-        {
-            id:6,
-            image: Lion,
-            rate:9.1
-        },
-        {
-            id:7,
-            image: Mermaid,
-            rate:9.2
-        },
-    ]
-    
-    const Images2=[
-        {
-            id:8,
-            image: Moana,
-            rate:9.8
-        },
-        {
-            id:9,
-            image: Mulan,
-            rate:9.7
-        },
-        {
-            id:10,
-            image: PeterPan,
-            rate:8.7
-        },
-        {
-            id:11,
-            image: Jungle,
-            rate:8.5
-        },
-        {
-            id:12,
-            image: Tangled,
-            rate:8.8
-        },
-        {
-            id:13,
-            image: Zootopia,
-            rate:9.6
-        },
-
-    ]
-
-    const Images3=[
-        {
-            id:1,
-            image: Guard,
-            rate:8.8
-        },
-        {
-            id:2,
-            image: Madagascar,
-            rate:8.6
-
-        },
-        {
-            id:3,
-            image: Mega,
-            rate:9.3
-
-        },
-        {
-            id:4,
-            image: Panda,
-            rate:9.5
-            
-        },
-        {
-            id:5,
-            image: Sinbad,
-            rate:9.6
-        },
-        {
-            id:6,
-            image: Trolls,
-            rate:9.1
-        },
-    ]
   return (
     <View style={styles.container}>
         
@@ -243,43 +174,34 @@ export default function Home({navigation}) {
             <Text style={{color:'gray', fontSize:13}}>View More</Text>
         </View>
 
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{paddingHorizontal:25}}>
-            {Images.map((item,i)=>{
-                return(
-                    <View key={i} style={{paddingHorizontal:5}}>
-                        <Trails image={item.image} rate={item.rate}/>
-                    </View>
-                )
-            })}
-        </ScrollView>
+        <FlatList horizontal showsHorizontalScrollIndicator={false}
+        data={movie}
+        renderItem={({item})=>
+        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title}/>
+        } keyExtractor={item=>item.id}/>
+        
+
+        
         <View style={{display:'flex', flexDirection:'row', justifyContent:'space-between', paddingHorizontal:30, paddingVertical:15}}>
             <Text style={{fontWeight:'bold', color:'white', fontSize:20}}>Made For You</Text>
             <Text style={{color:'gray', fontSize:13}}>View More</Text>
         </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{paddingHorizontal:25}}>
-            {Images2.map((item,i)=>{
-                return(
-                    <View key={i} style={{paddingHorizontal:5, paddingBottom:20}}>
-                        <Trails image={item.image} rate={item.rate}/>
-                    </View>
-                )
-            })}
-        </ScrollView>
+        <FlatList horizontal showsHorizontalScrollIndicator={false}
+        data={popular}
+        renderItem={({item})=>
+        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title}/>
+        } keyExtractor={item=>item.id}/>
       </View>
       <View style={styles.bottom}>
       <View style={{display:'flex', flexDirection:'row', justifyContent:'space-between', paddingHorizontal:30, paddingVertical:15}}>
             <Text style={{fontWeight:'bold', color:'white', fontSize:20}}>Popular on <Text style={{color:'#F2B916'}}>Muvi</Text></Text>
             <Text style={{color:'gray', fontSize:13}}>View More</Text>
         </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{paddingHorizontal:25, paddingBottom:105}}>
-            {Images3.map((item,i)=>{
-                return(
-                    <View key={i} style={{paddingHorizontal:5}}>
-                        <Trails2 image={item.image} rate={item.rate}/>
-                    </View>
-                )
-            })}
-        </ScrollView>
+        <FlatList horizontal showsHorizontalScrollIndicator={false}
+        data={rated}
+        renderItem={({item})=>
+        <Trails2 image={item.poster_path}  rate={item.vote_average} name={item.name}/>
+        } keyExtractor={item=>item.id}/>
       </View> 
       </ScrollView>
       <View style={styles.menu}>

@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, Dimensions, Image, FlatList, ScrollView, Pressable }from 'react-native'
 import { Icon } from 'react-native-elements'
 import { TextInput } from 'react-native-paper'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Tags from './tags'
+import Trails from './Trails'
 const height=Dimensions.get('screen').height
 
 export default function Search({navigation}) {
+    
     const labels=[
         {
             id:1,
