@@ -44,7 +44,7 @@ export default function SignIn({navigation}) {
 
   const handleSubmit = () => {
       if (validateForm()) {
-          navigation.navigate('Home')
+          navigation.navigate('Home1')
           console.log('Form submitted:', email, password)
       }
   }

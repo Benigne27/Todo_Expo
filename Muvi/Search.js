@@ -60,12 +60,7 @@ export default function Search({navigation}) {
         </View>
         </View>
 
-        <View style={styles.menu}>
-        <Pressable onPress={()=>navigation.navigate('Home')}><Icon name='home' iconStyle={{color:'white', fontSize:30}}/></Pressable>
-        <Pressable onPress={()=>navigation.navigate('Search')}><Icon name='search' iconStyle={{color:'#F2B916', fontSize:30}}/></Pressable>
-        <Pressable onPress={()=>navigation.navigate('List')}><Icon name='folder' iconStyle={{color:'white', fontSize:30}}/></Pressable>  
-        <Pressable onPress={()=>navigation.navigate('Profile')}><Icon name='menu' iconStyle={{color:'white', fontSize:30}}/></Pressable>
-      </View>
+        
     </View>
   )
 }

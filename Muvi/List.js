@@ -24,7 +24,7 @@ export default function List({navigation}) {
         GetMovies()
       }, [])
       const GetMovies=()=>{
-      fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
+      fetch('https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1', options)
         .then(response => response.json())
         .then(response =>{
             setMovie(response.results)
@@ -105,12 +105,7 @@ export default function List({navigation}) {
         <ListTrail image={item.poster_path} text1={item.name} text2={item.vote_count} text3={item.first_air_date}/>}/>
 
             </View>
-            <View style={styles.menu}>
-       <Pressable onPress={()=>navigation.navigate('Home')}><Icon name='home' iconStyle={{color:'white', fontSize:30}}/></Pressable>
-       <Pressable onPress={()=>navigation.navigate('Search')}><Icon name='search' iconStyle={{color:'white', fontSize:30}}/></Pressable>
-        <Pressable onPress={()=>navigation.navigate('List')}><Icon name='folder' iconStyle={{color:'#F2B916', fontSize:30}}/></Pressable>  
-        <Pressable onPress={()=>navigation.navigate('Profile')}><Icon name='menu' iconStyle={{color:'white', fontSize:30}}/></Pressable>
-      </View>
+          
 
     </View>
   )

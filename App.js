@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import {Text, View, TouchableOpacity, TextInput, ScrollView} from 'react-native';
+import {StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Todo from './Todo';
 import SignIn from './SignIn';
 import LogIn from './LogIn';
@@ -25,16 +26,15 @@ import Profile from './Muvi/Profile';
 import List from './Muvi/List';
 import ListTrail from './Muvi/ListTrail';
 import Search from './Muvi/Search';
+import Details from './Muvi/Details';
+import { Icon } from 'react-native-elements';
 
 const Stack= createNativeStackNavigator()
+const Tab= createBottomTabNavigator()
 
-export default function App() {
+function HomeStack() {
   return (
-
-  
-
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Splash'>
+    <Stack.Navigator initialRouteName='Details'>
         <Stack.Screen
              name='Splash'
             component={Splash} 
@@ -66,24 +66,39 @@ export default function App() {
               
             }}}/>
             <Stack.Screen
-             name='Home'
-             component={Home}
+             name='Home1'
+             component={MainTabNavigator}
              options={{headerShown:false}}/>
-             <Stack.Screen
-             name='Profile'
-             component={Profile}
+              <Stack.Screen
+             name='Details'
+             component={Details}
              options={{headerShown:false}}/>
-             <Stack.Screen
-             name='List'
-             component={List}
-             options={{headerShown:false}}/>
-             <Stack.Screen
-             name='Search'
-             component={Search}
-             options={{headerShown:false}}/>
-      </Stack.Navigator>
-    </NavigationContainer>   
+    </Stack.Navigator>
+  );
+}
 
+function MainTabNavigator() {
+  return (
+    <Tab.Navigator screenOptions={{tabBarLabel:'', tabBarActiveTintColor:'#F2B916', tabBarInactiveTintColor:'white', 
+    tabBarStyle:{
+      backgroundColor:'#26282C', height:100, paddingTop:15, borderTopColor:'#26282C'
+    },
+  tabBarActiveBackgroundColor:'#F2B916',
+  
+    }} >
+      <Tab.Screen name='Home' component={Home} options={{headerShown:false, tabBarIcon:()=><Icon name='home-outline' type='material-community' color={'white'} size={30}/>}}/>
+      <Tab.Screen name='Search' component={Search} options={{headerShown:false, tabBarIcon:()=><Icon name='magnify' type='material-community' color={'white'} size={30}/>}}/>
+      <Tab.Screen name='List' component={List} options={{headerShown:false, tabBarIcon:()=><Icon name='folder-outline' type='material-community' color={'white'} size={30}/>}}/>
+      <Tab.Screen name='Profile' component={Profile} options={{headerShown:false, tabBarIcon:()=><Icon name='account-outline' type='material-community' color={'white'} size={30}/>}}/>
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <HomeStack />
+    </NavigationContainer>
   );
 }
 
