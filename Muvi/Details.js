@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import { Icon } from 'react-native-elements'
 import Trails from './Trails'
 const height=Dimensions.get('screen').height
-export default function Details() {
+export default function Details({navigation, route}) {
     const [movie, setMovie]=useState([])
     const [popular, setPopular]=useState([])
     const [rated, setRated]=useState([])
@@ -35,6 +35,8 @@ export default function Details() {
                   })
                   .catch(err => console.error(err));
                 }
+
+                const {movies}=route.params
   return (
     <View style={styles.container}>
         <ScrollView>
@@ -53,7 +55,7 @@ export default function Details() {
                             <Icon name='play' type='material-community'/>
                             <Text>Play</Text>
                         </Pressable>
-                        <Pressable style={styles.button2}>
+                        <Pressable style={styles.button2} onPress={()=>navigation.navigate('List')}>
                             <Icon name='plus' type='material-community' color={'#F2B916'}/>
                             <Text style={styles.text2}>My List</Text>
                         </Pressable>
@@ -82,8 +84,9 @@ export default function Details() {
 
 const styles = StyleSheet.create({
     container:{
-        height:height,
-        backgroundColor:'#26282C'
+        height:1000,
+        backgroundColor:'#26282C',
+        
     },
     contain:{
         height:500,
@@ -129,7 +132,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        gap:40
+        gap:40,
+
     },
     button1:{
         height:40,
@@ -154,10 +158,9 @@ const styles = StyleSheet.create({
 
 
     },
-    // bottom:{
-    //     paddingVertical:20,
-    //     paddingHorizontal:20,
-    // },
+    bottom:{
+        paddingBottom:500
+    },
     text3:{
         color:'white',
         fontSize:20,

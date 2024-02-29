@@ -4,6 +4,7 @@ import { TextInput } from 'react-native-paper'
 import React, { useState, useEffect } from 'react'
 import Tags from './tags'
 import Trails from './Trails'
+import axios from 'axios'
 const height=Dimensions.get('screen').height
 
 export default function Search({navigation}) {
@@ -45,7 +46,7 @@ export default function Search({navigation}) {
   return (
     <View style={styles.container}>
         <View style={styles.header}>
-            <View><TextInput placeholder='Search Movie Title' right={<TextInput.Icon icon={'magnify'} color={'#F2B916'}/>} style={styles.input}/></View>
+            <View><TextInput placeholder='Search Movie Title' textColor='white' right={<TextInput.Icon icon={'magnify'} color={'#F2B916'}/>} style={styles.input}/></View>
             <View><FlatList horizontal={true} showsHorizontalScrollIndicator={false}
             data={labels} style={styles.list}
             renderItem={({item})=><Text style={{color:'white', fontWeight:'bold', fontSize:15, paddingHorizontal:10}}>{item.name}</Text>}/></View>

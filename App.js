@@ -27,6 +27,7 @@ import List from './Muvi/List';
 import ListTrail from './Muvi/ListTrail';
 import Search from './Muvi/Search';
 import Details from './Muvi/Details';
+import EditProfile from './Muvi/EditProfile';
 import { Icon } from 'react-native-elements';
 
 const Stack= createNativeStackNavigator()
@@ -34,7 +35,7 @@ const Tab= createBottomTabNavigator()
 
 function HomeStack() {
   return (
-    <Stack.Navigator initialRouteName='Details'>
+    <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen
              name='Splash'
             component={Splash} 
@@ -72,6 +73,10 @@ function HomeStack() {
               <Stack.Screen
              name='Details'
              component={Details}
+             options={{headerShown:false}}/>
+             <Stack.Screen
+             name='Edit'
+             component={EditProfile}
              options={{headerShown:false}}/>
     </Stack.Navigator>
   );

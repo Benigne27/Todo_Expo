@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, Dimensions} from 'react-native'
+import { StyleSheet, Text, View, Image, Dimensions, Pressable} from 'react-native'
 import { Icon } from 'react-native-elements'
 import React from 'react'
 import { StatusBar }from 'expo-status-bar'
@@ -22,10 +22,11 @@ export default function Profile({navigation}) {
                 <Text style={{fontSize:15, color:'gray', }}>doe.jennifer@gmail.com</Text>
               </View>
             </View>
-            <View style={{display:'flex', flexDirection:'row', gap:5, paddingTop:20}}>
+            <Pressable style={{display:'flex', flexDirection:'row', gap:5, paddingTop:20}} onPress={()=>navigation.navigate('Edit')}>
+              
               <Icon name='pencil-outline' type='material-community' iconStyle={{color:'#F2B916'}}/>
               <Text style={{fontSize:15, color:'#F2B916', paddingTop:5}}>Edit</Text>
-            </View>
+            </Pressable>
           </View>
         </View>
         <View style={{paddingHorizontal:20, paddingTop:40}}>
@@ -34,12 +35,12 @@ export default function Profile({navigation}) {
           <Settings icon={'cog-outline'} text={'App Settings'}/>
           <Settings icon={'web'} text={'Language'}/>
           <Settings icon={'help-circle-outline'} text={'Help'}/>
-           <View style={{display:'flex', gap:15, paddingTop:50}}>
-          <Text style={{color:'gray', fontSize:18}}>Terms & Conditions</Text>
-          <Text style={{color:'gray', fontSize:18}}>Privacy Policy</Text>
+           <View style={{display:'flex', gap:15, paddingTop:40}}>
+          <Text style={{color:'gray', fontSize:16}}>Terms & Conditions</Text>
+          <Text style={{color:'gray', fontSize:16}}>Privacy Policy</Text>
           
         </View>
-        <View style={{top:150}}>
+        <View style={{top:90}}>
           <Dark text={'Log Out'} style={{color:'red'}} navigation={navigation} destinationScreen={'Sign In'}/>
         </View>
         

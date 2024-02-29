@@ -28,7 +28,7 @@ const Trolls = require('../assets/Trolls.jpg')
 
 const height=Dimensions.get('screen').height
 export default function Home({navigation}) {
-    const [movie, setMovie]=useState([])
+    const [movies, setMovie]=useState([])
     const [popular, setPopular]=useState([])
     const [rated, setRated]=useState([])
     const options = {
@@ -139,6 +139,9 @@ export default function Home({navigation}) {
         },
     ]
 
+    const handleImgPress=(item)=>{
+        navigation.navigate('Details',{movies: item})
+    }
   return (
     <View style={styles.container}>
         
@@ -175,9 +178,9 @@ export default function Home({navigation}) {
         </View>
 
         <FlatList horizontal showsHorizontalScrollIndicator={false}
-        data={movie}
+        data={movies}
         renderItem={({item})=>
-        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title}/>
+        <Pressable onPress={handleImgPress(item)}><Trails image={item.poster_path}  rate={item.vote_average} name={item.title} {...item}/></Pressable>
         } keyExtractor={item=>item.id}/>
         
 
@@ -189,7 +192,7 @@ export default function Home({navigation}) {
         <FlatList horizontal showsHorizontalScrollIndicator={false}
         data={popular}
         renderItem={({item})=>
-        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title}/>
+        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title} />
         } keyExtractor={item=>item.id}/>
       </View>
       <View style={styles.bottom}>

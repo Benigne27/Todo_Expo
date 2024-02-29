@@ -5,8 +5,8 @@ import React from 'react'
 export default function Settings({icon, text}) {
   return (
     <View style={styles.container}>
-            <Icon name={icon} type='material-community' iconStyle={{color:'white', fontSize:30}}/>
-            <Text style={{color:'white', fontSize:20, fontWeight:'500'}}>{text}</Text>
+            <Icon name={icon} type='material-community' iconStyle={{color:'white', fontSize:27}}/>
+            <Text style={{color:'white', fontSize:17, fontWeight:'500'}}>{text}</Text>
           </View>
   )
 }

@@ -13,28 +13,28 @@ export default function Trails({image, rate, name, synopsis}) {
             </View>
       </ImageBackground>
       <Text style={styles.title}>{name}</Text>
-      <Text style={styles.title2}>{synopsis}</Text>
+      {/* <Text style={styles.title2}>{synopsis}</Text> */}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     container:{
-        height:300,
-        width:300,
+        width:270,
         paddingHorizontal:20
        
     },
     image:{
-        height:'80%',
-        width:'100%'
+        height:260,
+        width:'100%',
     },
     title:{
-      top:-40,
       fontSize:20,
       color:'white',
       textAlign:'center',
-      fontWeight:'bold'
+      fontWeight:'bold',
+      paddingVertical:10
+
     },
     title2:{
     paddingVertical:10,
