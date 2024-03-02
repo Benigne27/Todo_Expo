@@ -5,6 +5,7 @@ import { StatusBar }from 'expo-status-bar'
 import Tags from './tags'
 import Trails from './Trails'
 import Trails2 from './Trails2'
+import Details from './Details'
 const Aladdin= require('../assets/Aladdin.webp')
 const Beauty = require('../assets/BeautyB.jpg')
 const Cinderella = require('../assets/Cinderella.jpg')
@@ -149,7 +150,7 @@ export default function Home({navigation}) {
       <View style={styles.header}>
         <View style={styles.header1}>
             
-                <Pressable onPress={()=>navigation.navigate('Details')}><Image source={require('../assets/Muvi.png')} style={{height:60, width:150}}/></Pressable>
+                <Pressable><Image source={require('../assets/Muvi.png')} style={{height:60, width:150}}/></Pressable>
           
             <View style={{display:'flex', flexDirection:'row', gap:15}}>
                 <Icon name='bookmark-outline' type='material-community' iconStyle={{color:'white'}}/>
@@ -180,7 +181,7 @@ export default function Home({navigation}) {
         <FlatList horizontal showsHorizontalScrollIndicator={false}
         data={movies}
         renderItem={({item})=>
-        <Pressable onPress={handleImgPress(item)}><Trails image={item.poster_path}  rate={item.vote_average} name={item.title} {...item}/></Pressable>
+        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title} handlePress={()=>{navigation.navigate('Details', item)}}/>
         } keyExtractor={item=>item.id}/>
         
 
@@ -192,7 +193,7 @@ export default function Home({navigation}) {
         <FlatList horizontal showsHorizontalScrollIndicator={false}
         data={popular}
         renderItem={({item})=>
-        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title} />
+        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title} handlePress={()=>{navigation.navigate('Details', item)}}/>
         } keyExtractor={item=>item.id}/>
       </View>
       <View style={styles.bottom}>
@@ -203,7 +204,7 @@ export default function Home({navigation}) {
         <FlatList horizontal showsHorizontalScrollIndicator={false}
         data={rated}
         renderItem={({item})=>
-        <Trails2 image={item.poster_path}  rate={item.vote_average} name={item.name}/>
+        <Trails2 image={item.poster_path}  rate={item.vote_average} name={item.name} handlePress={()=>{navigation.navigate('Details', item)}}/>
         } keyExtractor={item=>item.id}/>
       </View> 
       </ScrollView>

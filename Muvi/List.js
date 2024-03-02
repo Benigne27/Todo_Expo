@@ -3,6 +3,7 @@ import { StatusBar }from 'expo-status-bar'
 import { Icon } from 'react-native-elements'
 import React, {useState, useEffect} from 'react'
 import ListTrail from './ListTrail'
+import Details from './Details'
 const height=Dimensions.get('screen').height
 const Guard = require('../assets/Home.jpg')
 const Madagascar = require('../assets/Madagascar3.jpg')
@@ -102,7 +103,7 @@ export default function List({navigation}) {
         <FlatList
         data={movie}
         renderItem={({item})=>
-        <ListTrail image={item.poster_path} text1={item.name} text2={item.vote_count} text3={item.first_air_date}/>}/>
+        <ListTrail image={item.poster_path} text1={item.name} text2={item.vote_count} text3={item.first_air_date} handlePress={()=>{navigation.navigate('Details', item)}}/>}/>
 
             </View>
           

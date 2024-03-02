@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
 
-export default function ListTrail({image, text1, text2, text3, text4}) {
+export default function ListTrail({image, text1, text2, text3, text4, navigation, destinationScreen, handlePress}) {
+    // const handlePress=()=>{
+    //     navigation.navigate(destinationScreen)
+    //   }
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={handlePress}>
         <Image source={{uri:`https://image.tmdb.org/t/p/w500${image}`}} style={styles.image} borderRadius={10}/>
         <View style={{display:'flex', gap:10, paddingTop:30}}>
             <Text style={{fontWeight:'bold', fontSize:16, color:'white'}}>{text1}</Text>
@@ -12,7 +15,7 @@ export default function ListTrail({image, text1, text2, text3, text4}) {
             <Text style={{fontWeight:'300', fontSize:13, color:'gray'}}>{text4}</Text>
         </View>
         
-    </View>
+    </Pressable>
   )
 }
 

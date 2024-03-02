@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, ImageBackground } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, Pressable } from 'react-native'
 import React from 'react'
 
-export default function Trails2({image, rate, name, synopsis}) {
+export default function Trails2({image, rate, name, synopsis, handlePress}) {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={handlePress}>
       <ImageBackground style={styles.image} borderRadius={10} resizeMode='stretch'
       source={{uri:`https://image.tmdb.org/t/p/w500${image}`}}>
         <View style={{width:48, height:20, backgroundColor:'#F2B916', 
@@ -14,7 +14,7 @@ export default function Trails2({image, rate, name, synopsis}) {
       </ImageBackground>
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.title2}>{synopsis}</Text>
-    </View>
+    </Pressable>
   )
 }
 

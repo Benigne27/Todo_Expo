@@ -4,6 +4,7 @@ import { Icon } from 'react-native-elements'
 import Trails from './Trails'
 const height=Dimensions.get('screen').height
 export default function Details({navigation, route}) {
+    const desc=route.params;
     const [movie, setMovie]=useState([])
     const [popular, setPopular]=useState([])
     const [rated, setRated]=useState([])
@@ -36,20 +37,19 @@ export default function Details({navigation, route}) {
                   .catch(err => console.error(err));
                 }
 
-                const {movies}=route.params
+                
   return (
     <View style={styles.container}>
         <ScrollView>
         <View style={styles.contain}>
             <View style={styles.header}>
-                <Icon name='arrow-left' type='material-community' color={'#F2B916'}/>
+                <Pressable onPress={()=>navigation.goBack()}><Icon name='arrow-left' type='material-community' color={'#F2B916'}/></Pressable>
             <Text style={styles.text}>Action</Text>
             </View>
             <View style={styles.body}>
-                <ImageBackground source={require('../assets/Aladdin.jpg')} style={styles.image} resizeMode='cover'/>
-                <Text style={styles.text1}>Aladdin</Text>
-                <Text style={styles.text2}>Aladdin is a lovable street urchin who meets Princess Jasmine, 
-                    the beautiful daughter of the sultan of Agrabah. </Text>
+                <ImageBackground source={{uri:`https://image.tmdb.org/t/p/w500${desc.poster_path}`}} style={styles.image} resizeMode='stretch'/>
+                <Text style={styles.text1}>{desc.original_title}</Text>
+                <Text style={styles.text2}>{desc.overview}</Text>
                     <View style={styles.buttons}>
                         <Pressable style={styles.button1}>
                             <Icon name='play' type='material-community'/>
@@ -66,13 +66,13 @@ export default function Details({navigation, route}) {
                 <FlatList horizontal showsHorizontalScrollIndicator={false}
         data={popular}
         renderItem={({item})=>
-        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title}/>
+        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title} handlePress={()=>{navigation.navigate('Details', item)}}/>
         } keyExtractor={item=>item.id}/>
         <Text style={styles.text3}>Muvi originals Action</Text>
         <FlatList horizontal showsHorizontalScrollIndicator={false}
         data={movie}
         renderItem={({item})=>
-        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title}/>
+        <Trails image={item.poster_path}  rate={item.vote_average} name={item.title} handlePress={()=>{navigation.navigate('Details', item)}}/>
         } keyExtractor={item=>item.id}/>
             </View>
             
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     },
     contain:{
         height:500,
-        backgroundColor:'#1F2123'
+        
     },
     header:{
         height:100,
@@ -99,7 +99,8 @@ const styles = StyleSheet.create({
         alignItems:'flex-end',
         justifyContent:'flex-start',
         gap:20,
-        paddingLeft:20
+        paddingLeft:20,
+        backgroundColor:'#1F2123'
     },
     text:{
         color:'white',
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
     },
     image:{
-        height:200,
+        height:350,
         width:370,
         display:'flex',
         alignSelf:'center'
@@ -115,7 +116,8 @@ const styles = StyleSheet.create({
     body:{
         paddingVertical:20,
         paddingHorizontal:20,
-        gap:15
+        gap:15,
+        backgroundColor:'#1F2123'
     },
     text1:{
         color:'white',

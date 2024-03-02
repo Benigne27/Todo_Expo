@@ -4,10 +4,42 @@ import { TextInput } from 'react-native-paper'
 import React, { useState, useEffect } from 'react'
 import Tags from './tags'
 import Trails from './Trails'
+import ListTrail from './ListTrail'
 import axios from 'axios'
+import Details from './Details'
 const height=Dimensions.get('screen').height
 
 export default function Search({navigation}) {
+    
+    const [searchText, setSearchText]= useState('')
+    const [theData, setTheData]=useState([])
+    useEffect(()=>{
+        if(searchText.length>0){
+            getSearch()
+        }
+        else{
+            setTheData([])
+        }
+    }, [searchText])
+
+    
+        const options = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTZkZjcwYmMwMWRjZmQwNGFjM2IyZWIyYmQ1NTY4NiIsInN1YiI6IjY1ZDg2YzExYTI4NGViMDE4NTg3ZjgwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.a6PeP6q_wT-WWIEvsSJIorsE4u0KlW5fOT17eF4d_Qs'
+            }
+          };
+       const getSearch=async()=>{
+        try{
+         const results= await axios.get(`https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=1`, options)
+          
+            setTheData(results.data.results)
+        }
+        catch(err){console.error(err)};
+        
+    
+}
     
     const labels=[
         {
@@ -43,22 +75,42 @@ export default function Search({navigation}) {
             name:'Rated'
         },
     ]
+
+    
+
+
+
   return (
     <View style={styles.container}>
         <View style={styles.header}>
-            <View><TextInput placeholder='Search Movie Title' textColor='white' right={<TextInput.Icon icon={'magnify'} color={'#F2B916'}/>} style={styles.input}/></View>
-            <View><FlatList horizontal={true} showsHorizontalScrollIndicator={false}
+            <View><TextInput placeholder='Search Movie Title' 
+            textColor='white' 
+            right={<TextInput.Icon icon={'magnify'} 
+            color={'#F2B916'}/>} 
+            style={styles.input}
+            value={searchText}
+            onChangeText={setSearchText}/></View>
+            <View>
+                <FlatList horizontal={true} showsHorizontalScrollIndicator={false}
             data={labels} style={styles.list}
-            renderItem={({item})=><Text style={{color:'white', fontWeight:'bold', fontSize:15, paddingHorizontal:10}}>{item.name}</Text>}/></View>
+            renderItem={({item})=><Text style={{color:'white', fontWeight:'bold', fontSize:15, paddingHorizontal:10}}>{item.name}</Text>}
+            /></View>
         </View>
         <View style={styles.body}>
-            <View>
+        {searchText.length<=0?(<View>
                 <Image source={require('../assets/search.png')} style={styles.image}/>
-            </View>
-            <View style={{paddingHorizontal:20, top:100}}>
+                <View style={{paddingHorizontal:20, top:100}}>
         <Text style={styles.text1}>Find Your Movie</Text>
         <Text style={styles.text2}>Search Movie, Series, originals, as you like</Text>
         </View>
+        </View>):(<FlatList
+        data={theData}
+        renderItem={({item})=>
+        <ListTrail image={item.poster_path} text1={item.original_title} text2={item.vote_count} text3={item.first_air_date} handlePress={()=>{navigation.navigate('Details', item)}}/>}/>
+)}    
+                
+            
+            
         </View>
 
         
