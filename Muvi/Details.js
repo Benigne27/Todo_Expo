@@ -7,7 +7,7 @@ export default function Details({navigation, route}) {
     const desc=route.params;
     const [movie, setMovie]=useState([])
     const [popular, setPopular]=useState([])
-    const [rated, setRated]=useState([])
+
     const options = {
         method: 'GET',
         headers: {
@@ -84,7 +84,7 @@ export default function Details({navigation, route}) {
 
 const styles = StyleSheet.create({
     container:{
-        height:1000,
+        height: height,
         backgroundColor:'#26282C',
         
     },
@@ -171,5 +171,6 @@ const styles = StyleSheet.create({
         alignItems:'flex-start',
         paddingBottom:20,
         paddingHorizontal:20,
+        paddingVertical:10
     },
 })
