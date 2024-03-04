@@ -2,11 +2,13 @@ import { StyleSheet, Text, View, Dimensions, ImageBackground , Pressable, Scroll
 import React, {useState, useEffect} from 'react'
 import { Icon } from 'react-native-elements'
 import Trails from './Trails'
+import YoutubePlayer from "react-native-youtube-iframe";
 const height=Dimensions.get('screen').height
 export default function Details({navigation, route}) {
     const desc=route.params;
     const [movie, setMovie]=useState([])
     const [popular, setPopular]=useState([])
+    const [videoKey, setVideoKey]=useState('')
 
     const options = {
         method: 'GET',
@@ -18,6 +20,7 @@ export default function Details({navigation, route}) {
       useEffect(()=>{
         GetMovies()
         GetPopular()
+        handlePlay()
       })
 
       const GetMovies=()=>{
@@ -36,7 +39,16 @@ export default function Details({navigation, route}) {
                   })
                   .catch(err => console.error(err));
                 }
+        
+        const handlePlay=()=>{
 
+                fetch(`https://api.themoviedb.org/3/movie/${desc.id}/videos?language=en-US`, options)
+                .then(response => response.json())
+                .then(response => 
+                    setVideoKey (response.results[0].key),
+                )
+                .catch(err => console.error(err));
+        }        
                 
   return (
     <View style={styles.container}>
@@ -47,7 +59,11 @@ export default function Details({navigation, route}) {
             <Text style={styles.text}>Action</Text>
             </View>
             <View style={styles.body}>
-                <ImageBackground source={{uri:`https://image.tmdb.org/t/p/w500${desc.poster_path}`}} style={styles.image} resizeMode='stretch'/>
+               
+                <YoutubePlayer
+                height={250}
+                videoId={videoKey}/>
+
                 <Text style={styles.text1}>{desc.original_title}</Text>
                 <Text style={styles.text2}>{desc.overview}</Text>
                     <View style={styles.buttons}>
