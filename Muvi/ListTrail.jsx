@@ -2,9 +2,7 @@ import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
 
 export default function ListTrail({image, text1, text2, text3, text4, navigation, destinationScreen, handlePress}) {
-    // const handlePress=()=>{
-    //     navigation.navigate(destinationScreen)
-    //   }
+   
   return (
     <Pressable style={styles.container} onPress={handlePress}>
         <Image source={{uri:`https://image.tmdb.org/t/p/w500${image}`}} style={styles.image} borderRadius={10}/>

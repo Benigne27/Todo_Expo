@@ -7,6 +7,10 @@ import Input from './input'
 import Yellow from './Yellow'
 import Dark from './Dark'
 import { useState } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { FIREBASE_AUTH } from '../FirebaseConfig'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import FlashMessage, { hideMessage, showMessage } from 'react-native-flash-message'
 
 const height=Dimensions.get('screen').height
 
@@ -16,6 +20,7 @@ export default function SignIn({navigation}) {
   const [password, setPassword] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+  const [secure, setSecure]=useState(true)
 
   const validateForm = () => {
       let valid = true
@@ -42,12 +47,43 @@ export default function SignIn({navigation}) {
       return valid
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
       if (validateForm()) {
-          navigation.navigate('Home1')
-          console.log('Form submitted:', email, password)
+          
+            const data={
+            email:email,
+            password:password
+          }
+
+          await AsyncStorage.setItem('user_data', JSON.stringify(data))
+
+             console.log('Form submitted:', email, password)
+      
+
+          try {
+            const response= await signInWithEmailAndPassword(FIREBASE_AUTH, email, password)
+            console.log(response)
+            console.log("You have Successfully signed in!")
+            
+          } catch (error) {
+            console.log(error)
+            showMessage({
+              message:'Sign In Failed',
+              description: error.code.toString(),
+              icon:'danger',
+              type:'danger'
+            })
+            
+          }
       }
   }
+
+  const getData=async()=>{
+    let data=await AsyncStorage.getItem('user_data')
+    console.log(data)
+  }
+
+  getData()
 
   const isValidEmail = (email) => {
       
@@ -56,7 +92,9 @@ export default function SignIn({navigation}) {
   }
 
   return (
+    
     <View style={styles.container}>
+      <FlashMessage position='top'/>
       <StatusBar style='light'/>
      
 
@@ -67,7 +105,7 @@ export default function SignIn({navigation}) {
       <View style={{height:30}}>{emailError?(<Text style={{color:'red', paddingVertical:5}}>{emailError}</Text>):null}</View>
       <View style={{height:10}}></View>
       
-      <Input label='Password' icon='lock-outline' placeholder='Your password' bool={true}
+      <Input label='Password' icon='lock-outline' placeholder='Your password' bool={secure} icon2={secure? 'eye-off-outline' :'eye'} press={()=>{setSecure(!secure)}}
       value={password} change={setPassword} error={!!passwordError}/>
       <View style={{height:30}}>{emailError?(<Text style={{color:'red', paddingVertical:5}}>{passwordError}</Text>):null}</View>
 

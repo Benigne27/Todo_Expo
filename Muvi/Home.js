@@ -6,25 +6,8 @@ import Tags from './tags'
 import Trails from './Trails'
 import Trails2 from './Trails2'
 import Details from './Details'
-const Aladdin= require('../assets/Aladdin.webp')
-const Beauty = require('../assets/BeautyB.jpg')
-const Cinderella = require('../assets/Cinderella.jpg')
-const Encanto = require('../assets/Encanto.jpg')
-const Frozen = require('../assets/Frozen.jpg')
-const Jungle = require('../assets/JungleBook.jpg')
-const Lion = require('../assets/LionK.jpg')
-const Mermaid = require('../assets/Mermaid.jpg')
-const Moana = require('../assets/Moana.jpg')
-const Mulan = require('../assets/Mulan.jpg')
-const PeterPan = require('../assets/PeterPan.jpg')
-const Tangled = require('../assets/Tangled.jpg')
-const Zootopia = require('../assets/Zootopia.jpg')
-const Guard = require('../assets/Home.jpg')
-const Madagascar = require('../assets/Madagascar3.jpg')
-const Mega = require('../assets/Mega.jpg')
-const Panda = require('../assets/Panda.jpg')
-const Sinbad = require('../assets/Sinbad.jpg')
-const Trolls = require('../assets/Trolls.jpg')
+import FlashMessage, { hideMessage, showMessage } from 'react-native-flash-message'
+
 
 
 const height=Dimensions.get('screen').height
@@ -43,7 +26,7 @@ export default function Home({navigation}) {
         GetMovies()
         GetPopular()
         GetRated()
-      })
+      },[])
 
       const GetMovies=()=>{
             fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
@@ -145,7 +128,7 @@ export default function Home({navigation}) {
     }
   return (
     <View style={styles.container}>
-        
+        <FlashMessage position={'top'}/>
         <StatusBar style='light'/>
       <View style={styles.header}>
         <View style={styles.header1}>

@@ -2,9 +2,7 @@ import { StyleSheet, Text, View, ImageBackground, Pressable } from 'react-native
 import React from 'react'
 
 export default function Trails({image, rate, name, synopsis, navigation, destinationScreen, handlePress}) {
-  // const handlePress=()=>{
-  //   navigation.navigate(destinationScreen)
-  // }
+  
   return (
     <Pressable style={styles.container} onPress={handlePress}>
       <ImageBackground style={styles.image} borderRadius={10} resizeMode='stretch'

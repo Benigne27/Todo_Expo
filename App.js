@@ -36,10 +36,10 @@ const Tab= createBottomTabNavigator()
 function HomeStack() {
   return (
     <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen
+        {/* <Stack.Screen
              name='Splash'
             component={Splash} 
-            options={{headerShown:false}}/>
+            options={{headerShown:false}}/> */}
         <Stack.Screen
              name='Start'
              component={Start}

@@ -1,15 +1,17 @@
 {
   "expo": {
-    "name": "Todo_Expo",
+    "name": "Muvi",
     "slug": "Todo_Expo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Muvi.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Muvi.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "height":10,
+      "width":40,
+      "backgroundColor": "#1F2123"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,12 +21,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/Muvi.png",
+        "backgroundColor": "#1F2123"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/Muvi.png"
     }
   }
 }
