@@ -37,7 +37,7 @@ import EditProfile from "./Muvi/EditProfile";
 import ProfileDrawer from "./Muvi/ProfileDrawer";
 import Series from "./Muvi/Series";
 import Films from "./Muvi/Films";
-import ThemeChanger from "./Muvi/ThemeChanger";
+import ThemeProvider from "./Muvi/ThemeProvider";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,7 +45,7 @@ const Drawer = createDrawerNavigator();
 const Top = createMaterialTopTabNavigator();
 
 function HomeStack() {
-  const [visible, setVisible] = useState(false);
+  
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
@@ -86,12 +86,60 @@ function HomeStack() {
         name="Home1"
         component={MainTabNavigator}
         options={{
+          headerShown:false
+        }}
+      />
+      <Stack.Screen
+        name="Details"
+        component={Details}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Edit"
+        component={EditProfile}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function MainTabNavigator() {
+  const [visible, setVisible] = useState(false);
+  return (
+    
+    <Tab.Navigator
+      screenOptions={{
+        tabBarLabel: "",
+        tabBarActiveTintColor: "#F2B916",
+        tabBarInactiveTintColor: "white",
+        tabBarStyle: {
+          backgroundColor: "#26282C",
+          height: 100,
+          paddingTop: 15,
+          borderTopColor: "#26282C",
+          borderBottomColor:'#1F2123'
+        },
+        tabBarActiveBackgroundColor: "#F2B916",
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={TopNavigation}
+        options={{
+          
+          tabBarIcon: () => (
+            <Icon
+              name="home-outline"
+              type="material-community"
+              color={"white"}
+              size={30}
+            />
+          ),
           headerBackTitleVisible: false,
           headerTintColor: "#1F2123",
           headerBackVisible: false,
-        
-          headerStyle: { backgroundColor: "#1F2123", height:300 },
-          headerLeft: () => <Image source={require("./assets/Muvi.png")} />,
+          headerStyle: { backgroundColor: "#1F2123", height:150, },
+          headerLeft: () => <Image source={require("./assets/Muvi.png")} style={{height:50, width:150}}/>,
           headerRight: () => {
             return (
               <View style={{ display: "flex", flexDirection: "row", gap: 20 }}>
@@ -110,7 +158,7 @@ function HomeStack() {
                 <View>
                   <Modal
                     isVisible={visible}
-                    coverScreen={true}
+                    
                     backdropColor="white"
                     backdropOpacity={0.4}
                   >
@@ -147,51 +195,6 @@ function HomeStack() {
               </View>
             );
           },
-        }}
-      />
-      <Stack.Screen
-        name="Details"
-        component={Details}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Edit"
-        component={EditProfile}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function MainTabNavigator() {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarLabel: "",
-        tabBarActiveTintColor: "#F2B916",
-        tabBarInactiveTintColor: "white",
-        tabBarStyle: {
-          backgroundColor: "#26282C",
-          height: 100,
-          paddingTop: 15,
-          borderTopColor: "#26282C",
-        },
-        tabBarActiveBackgroundColor: "#F2B916",
-      }}
-    >
-      <Tab.Screen
-        name="Home"
-        component={TopNavigation}
-        options={{
-          headerShown: false,
-          tabBarIcon: () => (
-            <Icon
-              name="home-outline"
-              type="material-community"
-              color={"white"}
-              size={30}
-            />
-          ),
         }}
       />
       <Tab.Screen
@@ -285,10 +288,13 @@ export const TopNavigation = () => {
 
 export default function App() {
   return (
-    // <ThemeChanger>
-    // </ThemeChanger>
+    
     <NavigationContainer>
+      {/* <ThemeProvider> */}
       <HomeStack />
+      {/* </ThemeProvider> */}
     </NavigationContainer>
+    
+
   );
 }
