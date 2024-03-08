@@ -1,8 +1,11 @@
+import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Todo from "./Todo";
 import SignIn from "./SignIn";
 import LogIn from "./LogIn";
@@ -29,9 +32,14 @@ import Search from "./Muvi/Search";
 import Details from "./Muvi/Details";
 import EditProfile from "./Muvi/EditProfile";
 import { Icon } from "react-native-elements";
+import ProfileDrawer from "./Muvi/ProfileDrawer";
+import Series from "./Muvi/Series";
+import Films from "./Muvi/Films";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
+const Top = createMaterialTopTabNavigator();
 
 function HomeStack() {
   return (
@@ -107,7 +115,7 @@ function MainTabNavigator() {
     >
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={TopNavigation}
         options={{
           headerShown: false,
           tabBarIcon: () => (
@@ -152,7 +160,7 @@ function MainTabNavigator() {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={DrawerNavigation}
         options={{
           headerShown: false,
           tabBarIcon: () => (
@@ -168,6 +176,47 @@ function MainTabNavigator() {
     </Tab.Navigator>
   );
 }
+
+function DrawerNavigation() {
+  return (
+    <Drawer.Navigator drawerContent={() => <ProfileDrawer />}>
+      <Drawer.Screen
+        name="Profile1"
+        component={Profile}
+        options={{ headerShown: false }}
+      />
+    </Drawer.Navigator>
+  );
+}
+
+export const TopNavigation = () => {
+  return (
+    <Top.Navigator
+      tabBarPosition="top"
+      style={{}}
+      screenOptions={{
+        tabBarStyle: {
+          height: 70,
+          paddingTop: 30,
+          backgroundColor: "#1F2123",
+        },
+        tabBarLabelStyle:{
+          color: "white",
+            fontWeight: "bold",
+        },
+       
+      }}
+    >
+      <Top.Screen
+        name="Featured"
+        component={Home}
+        
+      />
+      <Top.Screen name="Series" component={Series} />
+      <Top.Screen name="Films" component={Films} />
+    </Top.Navigator>
+  );
+};
 
 export default function App() {
   return (

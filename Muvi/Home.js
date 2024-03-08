@@ -8,19 +8,23 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
-import { Icon } from "react-native-elements";
+import { Button, Icon } from "react-native-elements";
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import Tags from "./tags";
 import Trails from "./Trails";
 import Trails2 from "./Trails2";
 import Details from "./Details";
+import Modal from "react-native-modal";
+import { TopNavigation } from "../App";
 
 const height = Dimensions.get("screen").height;
 export default function Home({ navigation }) {
   const [movies, setMovie] = useState([]);
   const [popular, setPopular] = useState([]);
   const [rated, setRated] = useState([]);
+  const [visible, setVisible] = useState(false);
+
   const options = {
     method: "GET",
     headers: {
@@ -157,13 +161,32 @@ export default function Home({ navigation }) {
               type="material-community"
               iconStyle={{ color: "white" }}
             />
-            <Icon
-              name="bell-outline"
-              type="material-community"
-              iconStyle={{ color: "white" }}
-            />
+            <Pressable onPress={() => setVisible(!visible)}>
+              <Icon
+                name="bell-outline"
+                type="material-community"
+                iconStyle={{ color: "white" }}
+              />
+            </Pressable>
+            <View style={styles.modal}>
+              <Modal
+                isVisible={visible}
+                coverScreen={true}
+                backdropColor="white"
+                backdropOpacity={0.8}
+               
+                
+              >
+                <Text style={{fontSize:20, textAlign:'center', fontWeight:'bold'}}>
+                  You do not have any Notification as of now. {"\n"}
+                  Check back later!
+                </Text>
+                <Button title={"OK"} onPress={() => setVisible(!visible)} />
+              </Modal>
+            </View>
           </View>
         </View>
+        
         <View style={{ top: 50 }}>
           <FlatList
             horizontal={true}
@@ -333,5 +356,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+  },
+  modal: {
+    // height:200,
+    // width:300,
+    backgroundColor: "white",
   },
 });
