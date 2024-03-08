@@ -15,15 +15,14 @@ import Tags from "./tags";
 import Trails from "./Trails";
 import Trails2 from "./Trails2";
 import Details from "./Details";
-import Modal from "react-native-modal";
-import { TopNavigation } from "../App";
+
+
 
 const height = Dimensions.get("screen").height;
 export default function Home({ navigation }) {
   const [movies, setMovie] = useState([]);
   const [popular, setPopular] = useState([]);
   const [rated, setRated] = useState([]);
-  const [visible, setVisible] = useState(false);
 
   const options = {
     method: "GET",
@@ -73,40 +72,7 @@ export default function Home({ navigation }) {
       .catch((err) => console.error(err));
   };
 
-  const data = [
-    {
-      id: 1,
-      name: "Featured",
-    },
-    {
-      id: 2,
-      name: "Series",
-    },
-    {
-      id: 3,
-      name: "Films",
-    },
-    {
-      id: 4,
-      name: "Origin",
-    },
-    {
-      id: 5,
-      name: "Animated",
-    },
-    {
-      id: 6,
-      name: "Genres",
-    },
-    {
-      id: 7,
-      name: "Top",
-    },
-    {
-      id: 8,
-      name: "Rated",
-    },
-  ];
+  
 
   const tags = [
     {
@@ -146,67 +112,7 @@ export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <View style={styles.header}>
-        <View style={styles.header1}>
-          <Pressable>
-            <Image
-              source={require("../assets/Muvi.png")}
-              style={{ height: 60, width: 150 }}
-            />
-          </Pressable>
-
-          <View style={{ display: "flex", flexDirection: "row", gap: 15 }}>
-            <Icon
-              name="bookmark-outline"
-              type="material-community"
-              iconStyle={{ color: "white" }}
-            />
-            <Pressable onPress={() => setVisible(!visible)}>
-              <Icon
-                name="bell-outline"
-                type="material-community"
-                iconStyle={{ color: "white" }}
-              />
-            </Pressable>
-            <View style={styles.modal}>
-              <Modal
-                isVisible={visible}
-                coverScreen={true}
-                backdropColor="white"
-                backdropOpacity={0.8}
-               
-                
-              >
-                <Text style={{fontSize:20, textAlign:'center', fontWeight:'bold'}}>
-                  You do not have any Notification as of now. {"\n"}
-                  Check back later!
-                </Text>
-                <Button title={"OK"} onPress={() => setVisible(!visible)} />
-              </Modal>
-            </View>
-          </View>
-        </View>
-        
-        <View style={{ top: 50 }}>
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={data}
-            renderItem={({ item }) => (
-              <Text
-                style={{
-                  color: "white",
-                  fontWeight: "bold",
-                  fontSize: 15,
-                  paddingHorizontal: 30,
-                }}
-              >
-                {item.name}
-              </Text>
-            )}
-          />
-        </View>
-      </View>
+      
       <ScrollView>
         <View style={styles.body}>
           <ScrollView
@@ -357,9 +263,5 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
-  modal: {
-    // height:200,
-    // width:300,
-    backgroundColor: "white",
-  },
+ 
 });
