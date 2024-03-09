@@ -117,7 +117,7 @@ function MainTabNavigator() {
           height: 100,
           paddingTop: 15,
           borderTopColor: "#26282C",
-          borderBottomColor:'#1F2123'
+          
         },
         tabBarActiveBackgroundColor: "#F2B916",
       }}
@@ -266,6 +266,7 @@ export const TopNavigation = () => {
         tabBarStyle: {
           height: 50,
           backgroundColor: "#1F2123",
+        borderTopColor:'red'
         },
         tabBarLabelStyle: {
           color: "white",
@@ -279,7 +280,7 @@ export const TopNavigation = () => {
         },
       }}
     >
-      <Top.Screen name="Featured" component={Home} />
+      <Top.Screen name="Featured" component={Home}/>
       <Top.Screen name="Series" component={Series} />
       <Top.Screen name="Films" component={Films} />
     </Top.Navigator>

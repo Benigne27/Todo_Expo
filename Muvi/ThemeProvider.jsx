@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { createContext, useState } from 'react'
 
-const ThemeContext= createContext()
+export const ThemeContext= createContext()
 
 export default function ThemeProvider({children}) {
     const [darkMode, setDarkMode]=useState(false)

@@ -9,21 +9,22 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 import { Icon } from "react-native-elements";
-import React from "react";
+import React, { useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import Settings from "./Settings";
-import Dark from "./Dark";
+import { ThemeContext } from "./ThemeProvider";
 const Profile1 = require("../assets/Profile.jpg");
 const height = Dimensions.get("screen").height;
 
 export default function Profile({ navigation }) {
   const navigation1 = useNavigation();
+  const [darkMode, handleMode]= useContext(ThemeContext)
 
   const handlePress = () => {
     navigation1.openDrawer(); 
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, darkMode&&styles.darkContain]}>
       <StatusBar style="light" />
       <View style={styles.header}>
         <Pressable onPress={handlePress}> 
