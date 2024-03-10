@@ -26,9 +26,9 @@ export default function Profile({ navigation }) {
   return (
     <View style={[styles.container, darkMode&&styles.darkContain]}>
       <StatusBar style="light" />
-      <View style={styles.header}>
+      <View style={[styles.header, darkMode&&styles.darkHead]}>
         <Pressable onPress={handlePress}> 
-          <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
+          <Text style={{ fontSize: 20, fontWeight: "bold", color: darkMode ? "white":"black" }}>
             More
           </Text>
         </Pressable>
@@ -36,7 +36,7 @@ export default function Profile({ navigation }) {
           <View style={{ display: "flex", flexDirection: "row", gap: 15 }}>
             <Image source={Profile1} style={styles.image} />
             <View style={{ paddingTop: 17 }}>
-              <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
+              <Text style={{ fontSize: 18, fontWeight: "600", color: darkMode ? "white":"black" }}>
                 Jennifer Doe
               </Text>
               <Text style={{ fontSize: 15, color: "gray" }}>
@@ -65,11 +65,11 @@ export default function Profile({ navigation }) {
         </View>
       </View>
       <View style={{ paddingHorizontal: 20, paddingTop: 40 }}>
-        <Settings icon={"inbox-outline"} text={"Inbox"} />
-        <Settings icon={"account-outline"} text={"Account Settings"} />
-        <Settings icon={"cog-outline"} text={"App Settings"} />
-        <Settings icon={"web"} text={"Language"} />
-        <Settings icon={"help-circle-outline"} text={"Help"} />
+        <Settings icon={"inbox-outline"} text={"Inbox"} color={darkMode ? "white":"black"}/>
+        <Settings icon={"account-outline"} text={"Account Settings"} color={darkMode ? "white":"black"}/>
+        <Settings icon={"cog-outline"} text={"App Settings"} color={darkMode ? "white":"black"}/>
+        <Settings icon={"web"} text={"Language"} color={darkMode ? "white":"black"}/>
+        <Settings icon={"help-circle-outline"} text={"Help"} color={darkMode ? "white":"black"}/>
         <View style={{ display: "flex", gap: 15, paddingTop: 40 }}>
           <Text style={{ color: "gray", fontSize: 16 }}>
             Terms & Conditions
@@ -86,6 +86,9 @@ const styles = StyleSheet.create({
     height: height,
     backgroundColor: "#1F2123",
   },
+  darkContain:{
+    backgroundColor:'white'
+  },
   header: {
     height: 250,
     backgroundColor: "#26282C",
@@ -94,6 +97,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingBottom: 20,
+  },
+  darkHead:{
+    backgroundColor:'#F5F5F5'
   },
   image: {
     height: 80,
