@@ -47,6 +47,7 @@ const Top = createMaterialTopTabNavigator();
 function HomeStack() {
   
   return (
+  
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Start"
@@ -100,6 +101,7 @@ function HomeStack() {
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
+
   );
 }
 
@@ -289,13 +291,13 @@ export const TopNavigation = () => {
 
 export default function App() {
   return (
-    
+    // <ThemeProvider>
     <NavigationContainer>
-      {/* <ThemeProvider> */}
+      
       <HomeStack />
-      {/* </ThemeProvider> */}
+      
     </NavigationContainer>
-    
+    // </ThemeProvider>
 
   );
 }

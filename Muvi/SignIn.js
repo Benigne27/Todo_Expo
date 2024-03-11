@@ -5,6 +5,7 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
   Pressable,
+  Linking
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { TextInput } from "react-native-paper";
@@ -173,6 +174,7 @@ export default function SignIn({ navigation }) {
         </Text>
         <Dark
           text="Google"
+          onPress={()=>{Linking.openURL('https://myaccount.google.com/')}}
           icon="google"
           type="font-awesome"
           color="red"
@@ -181,6 +183,7 @@ export default function SignIn({ navigation }) {
         <View style={{ height: 10 }}></View>
         <Dark
           text="Watch movie"
+          onPress={()=>{Linking.openURL('https://support.apple.com/en-us/111001')}}
           icon="movie-open-outline"
           type="material-community"
           color="white"
